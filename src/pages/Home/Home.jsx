@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 import MagicButton from '../../assets/Button/Button';
 import Reviews from '../../Components/Reviews/Reviews';
 import ScrollReveal from "../../utils/scrollReveal.jsx"
-
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   return (
@@ -50,8 +50,13 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
+   <Link to="/menu">
            <MagicButton text="Смотреть меню" />
+           </Link>
+           <Link to="/contact">
            <MagicButton text="связаться с нами" />
+           </Link>
+
             </motion.div>
 
             <motion.div
