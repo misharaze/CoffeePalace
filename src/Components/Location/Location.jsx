@@ -9,7 +9,7 @@ export default function Location() {
 
           <p>
             Café Nostalgie — это место, где время замедляется.
-            Мы находимся в самом сердце города.
+            Мы находимся в самом центре Москвы.
           </p>
 
           <div className="schedule">
@@ -19,15 +19,16 @@ export default function Location() {
           </div>
 
           <p className="address">
-            📍 Paris, Rue du Café, 12
+            📍 Москва, ул. Тверская, 7
           </p>
         </div>
 
         <div className="map">
           <iframe
             title="map"
-            src="https://www.google.com/maps?q=Paris&output=embed"
             loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Москва,+ул.+Тверская,+7&output=embed"
           />
         </div>
       </div>

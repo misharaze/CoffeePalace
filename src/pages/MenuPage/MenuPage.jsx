@@ -2,6 +2,7 @@ import { useState } from 'react';
 import products from '../../data/Product';
 import ProductCard from '../../Components/ProductCard/ProductCard';
 import ProductModal from '../../Components/ProductModal/ProductModal';
+import MenuFilterButton from '../../assets/Button/MenuFilterButton.jsx';
 import { useCart } from '../../Context/CartContext';
 import './MenuPage.scss';
 
@@ -17,16 +18,21 @@ export default function MenuPage() {
   return (
     <div className="page menu-page">
 
-      {/* hero */}
       <section className="menu-hero">
         <h1>Меню нашей кофейни</h1>
         <p>Авторские напитки и выпечка — с заботой и атмосферой.</p>
       </section>
 
       <div className="filter-buttons">
-        <button onClick={() => setFilter('all')} className={filter === 'all' ? 'active' : ''}>Все</button>
-        <button onClick={() => setFilter('coffee')} className={filter === 'coffee' ? 'active' : ''}>Кофе</button>
-        <button onClick={() => setFilter('pastry')} className={filter === 'pastry' ? 'active' : ''}>Выпечка</button>
+        <MenuFilterButton active={filter === 'all'} onClick={() => setFilter('all')}>
+          Все
+        </MenuFilterButton>
+        <MenuFilterButton active={filter === 'coffee'} onClick={() => setFilter('coffee')}>
+          Кофе
+        </MenuFilterButton>
+        <MenuFilterButton active={filter === 'pastry'} onClick={() => setFilter('pastry')}>
+          Выпечка
+        </MenuFilterButton>
       </div>
 
       <div className="product-grid">

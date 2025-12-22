@@ -1,0 +1,21 @@
+.menu-filter-btn {
+    padding: 0.7rem 1.8rem;
+    border-radius: 999px;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--text);
+    cursor: pointer;
+    transition: .3s;
+    font-weight: 500;
+  
+    &:hover {
+      box-shadow: 0 0 16px rgba(198,156,109,.5);
+    }
+  
+    &.active {
+      background: var(--accent);
+      color: #1f1b18;
+      box-shadow: 0 0 22px rgba(198,156,109,.8);
+    }
+  }
+  

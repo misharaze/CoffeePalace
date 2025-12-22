@@ -13,6 +13,7 @@ import AdvantagesPage from "./pages/AdvantagesPage/AdvantagesPage";
 
 import React from 'react';
 import "./styles/main.scss"
+import "./index.css"
 
 
 function App() {

@@ -11,3 +11,40 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+:root[data-theme="dark"] {
+  --bg: #1f1b18;
+  --text: #f4eee6;
+  --accent: #c69c6d;
+}
+
+:root[data-theme="light"] {
+  --bg: #f6f2ed;
+  --text: #2a2522;
+  --accent: #b58854;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+:root[data-theme="dark"] {
+  --bg: #1f1b18;
+  --text: #f4eee6;
+  --accent: #c69c6d;
+}
+
+:root[data-theme="light"] {
+  --bg: #f6f2ed;
+  --text: #2a2522;
+  --accent: #b58854;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+:root[data-theme="light"] {
+  --bg: #f6f3ee;
+  --text: #2e2e2e;
+  --accent: #c89e68;
+}

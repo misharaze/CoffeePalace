@@ -1,25 +1,50 @@
-// main.scss
+// -----------------------------
+// 🎨 CSS переменные тем для сайта
+// -----------------------------
 
-$bg-color: #2e2a26;
-$text-color: #f5f0e6;
-$accent-color: #c69c6d;
-$link-hover: #d7b899;
+:root {
+  --bg: #1f1b18;       // фон сайта (тёмный)
+  --text: #f5f0e6;     // текст
+  --card: #2a2522;     // карточки
+  --accent: #c69c6d;   // акцент
+  --accent-hover: #d7b899;
+}
+
+:root[data-theme="light"] {
+  --bg: #2b2623;
+  --card: #3a332f;
+  --text: #f3e9db;
+  --accent: #d8b075;
+  --link: #fef7ed;        // ← НОВЫЙ цвет ссылок
+  --link-hover: #e5c289;  // ← мягкий hover
+}
+
+// -----------------------------
+// 🎯 Базовые стили
+// -----------------------------
 
 body {
   margin: 0;
   font-family: 'Georgia', serif;
-  background-color: $bg-color;
-  color: $text-color;
+  background: var(--bg);
+  color: var(--text);
+  transition: background .3s ease, color .3s ease;
+  overflow-x: hidden;
 }
 
 a {
-  color: $accent-color;
+  color: var(--accent);
   text-decoration: none;
+  transition: color .3s ease;
 
   &:hover {
-    color: $link-hover;
+    color: var(--accent-hover);
   }
 }
+
+// -----------------------------
+// 📐 Макета
+// -----------------------------
 
 .app-layout {
   display: flex;
@@ -30,15 +55,18 @@ a {
 .main {
   flex: 1;
   padding: 1rem;
+  background: var(--bg);
+  color: var(--text);
 }
-
 .page {
-  padding: 2rem;
-  max-width: 960px;
-  margin: 0 auto;
+  background: var(--bg);
 }
 
-// Адаптация
+
+// -----------------------------
+// 📱 Адаптация
+// -----------------------------
+
 @media (max-width: 768px) {
   .main {
     padding: 1rem 0.5rem;
@@ -47,4 +75,20 @@ a {
   .page {
     padding: 1.5rem 1rem;
   }
+}
+body,
+.app-layout,
+.main,
+.page {
+  background: var(--bg);
+  color: var(--text);
+  transition: background .25s ease, color .25s ease;
+}
+
+.card,
+.card-section,
+.hero-card,
+.about-section,
+.menu-card {
+  background: var(--card);
 }

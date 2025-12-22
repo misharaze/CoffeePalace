@@ -1,45 +1,58 @@
-
 import { FaClock, FaMagic, FaCheckCircle, FaCogs } from 'react-icons/fa';
-import "./ChooseUs.scss"
+import "./ChooseUs.scss";
 import { Link } from 'react-router-dom';
 import MagicButton from '../../assets/Button/Button';
+import { motion } from "framer-motion";
 
- function ChooseUs() {
+function ChooseUs() {
   return (
-    <section className="why-choose-us">
+    <motion.section
+      className="why-choose-us"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+    >
       <div className="container">
         <div className="left">
           <h2>Почему выбирают нас</h2>
-          <p>Мы заботимся о вкусе, уюте и каждом клиенте. Наша кофейня вдохновлена традициями и новыми тенденциями.</p>
+          <p>Мы заботимся о вкусе, уюте и каждом клиенте.</p>
           <Link to="/advantages">
-  <MagicButton text="Посмотреть всё" />
-</Link>
+            <MagicButton text="Посмотреть всё" />
+          </Link>
         </div>
 
-        <div className="right">
-          <div className="feature">
-            <FaClock className="icon" />
-            <h3>Быстрое обслуживание</h3>
-            <p>Готовим заказы без задержек — с любовью и скоростью.</p>
-          </div>
-          <div className="feature">
-            <FaMagic className="icon" />
-            <h3>Атмосфера</h3>
-            <p>Уютный интерьер с винтажными нотками и живой музыкой.</p>
-          </div>
-          <div className="feature">
-            <FaCheckCircle className="icon" />
-            <h3>Свежие продукты</h3>
-            <p>Только натуральные ингредиенты и домашняя выпечка.</p>
-          </div>
-          <div className="feature">
-            <FaCogs className="icon" />
-            <h3>Онлайн-заказ</h3>
-            <p>Удобная система предзаказа и самовывоза через сайт.</p>
-          </div>
-        </div>
+        <motion.div
+          className="right"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          variants={{
+            show: { transition: { staggerChildren: 0.2 } }
+          }}
+        >
+          {[
+            { icon: <FaClock />, title: "Быстрое обслуживание", text: "Без задержек" },
+            { icon: <FaMagic />, title: "Атмосфера", text: "Уют и музыка" },
+            { icon: <FaCheckCircle />, title: "Свежие продукты", text: "Натуральные ингредиенты" },
+            { icon: <FaCogs />, title: "Онлайн-заказ", text: "Удобно и быстро" },
+          ].map((f) => (
+            <motion.div
+              className="feature"
+              key={f.title}
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                show: { opacity: 1, y: 0 }
+              }}
+            >
+              <div className="icon">{f.icon}</div>
+              <h3>{f.title}</h3>
+              <p>{f.text}</p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
+
 export default ChooseUs;

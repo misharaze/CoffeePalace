@@ -1,40 +1,52 @@
 import './Reviews.scss';
+import { motion } from "framer-motion";
 
 const reviews = [
   {
     name: 'Émilie',
-    text: 'Латте здесь — мой утренний ритуал. Атмосфера напоминает маленькие парижские кофейни.',
+    text: 'Латте здесь — мой утренний ритуал.',
     role: 'Постоянный гость'
   },
   {
     name: 'Lucas',
-    text: 'Очень тёплое место: можно поработать за ноутбуком и насладиться десертами.',
+    text: 'Отличное место для работы и отдыха.',
     role: 'Фрилансер'
   },
   {
     name: 'Sophie',
-    text: 'Люблю приходить сюда вечерами: мягкий свет, музыка и идеальный капучино.',
+    text: 'Идеальный капучино и атмосфера.',
     role: 'Ценитель кофе'
   },
 ];
 
 export default function Reviews() {
   return (
-    <section className="reviews-section">
+    <motion.section
+      className="reviews-section"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+    >
       <div className="reviews-header">
         <h2>Отзывы гостей</h2>
-        <p>Несколько слов от тех, кто уже нашёл своё уютное место в Café Nostalgie.</p>
+        <p>Несколько слов от наших посетителей.</p>
       </div>
 
       <div className="reviews-grid">
         {reviews.map((r) => (
-          <div className="review-card" key={r.name}>
+          <motion.div
+            className="review-card"
+            key={r.name}
+            animate={{ y: [0, -4, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          >
             <p className="text">“{r.text}”</p>
             <p className="name">{r.name}</p>
             <p className="role">{r.role}</p>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }

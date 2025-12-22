@@ -1,3 +1,4 @@
+import MenuActionButton from '../../assets/Button/MenuActionButton';
 import { useCart } from '../../Context/CartContext';
 import './CartPage.scss';
 
@@ -20,14 +21,14 @@ export default function CartPage() {
                   <h4>{item.name}</h4>
                   <p>{item.quantity} × {item.price.toFixed(2)} €</p>
                 </div>
-                <button onClick={() => removeFromCart(item.id)}>Удалить</button>
+                <MenuActionButton onClick={() => removeFromCart(item.id)}>Удалить</MenuActionButton>
               </li>
             ))}
           </ul>
 
           <div className="cart-summary">
             <p>Итого: {getTotal().toFixed(2)} €</p>
-            <button onClick={clearCart} className="clear-btn">Очистить корзину</button>
+            <MenuActionButton onClick={clearCart} className="clear-btn">Очистить корзину</MenuActionButton>
           </div>
         </>
       )}

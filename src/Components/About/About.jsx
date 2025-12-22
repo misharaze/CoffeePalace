@@ -1,59 +1,69 @@
 import './About.scss';
 import Interiors from '../../assets/img/interiors.jpg';
 import { Link } from "react-router-dom";
-import { Coffee } from "lucide-react";
 import MagicButton from '../../assets/Button/Button';
+import { motion } from "framer-motion";
 
 export default function AboutSection() {
   return (
-    <section className="about-section">
-
-      <div className="card-container">
-
+    <motion.section
+      className="about-section"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.9, ease: "easeOut" }}
+    >
+      <motion.div
+        className="card-container"
+        animate={{ y: [0, -4, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      >
         <div className="card-image">
-          <img src={Interiors} alt="Интерьер кафе" 
-          
-          
-          
-          
-          />
-          
+          <img src={Interiors} alt="Интерьер кафе" />
           <Link to="/coffee-varieties">
-            
-            
-         
-         <MagicButton text="Наши сорта кофе" />
-       </Link>
-     </div>
-
-        <div className="card-text">
-          <h2>Добро пожаловать в наш кофейный рай</h2>
-
-          <p>
-            Здесь каждое утро начинается с аромата свежемолотых зерен,
-            мягкой музыки и выпечки, приготовленной вручную.  
-            Мы собрали лучшее из французских традиций и 
-            добавили уют винтажных интерьеров.
-          </p>
-
-          <Link to="/process" >
-             <MagicButton text="о процессе приготовления " />
+            <MagicButton text="Наши сорта кофе" />
           </Link>
         </div>
 
-      </div>
-
-      <div className="stats">
-        <div className="stat">
-          <span className="number">25+</span>
-          <p>Видов напитков</p>
+        <div className="card-text">
+          <h2>Добро пожаловать в наш кофейный рай</h2>
+          <p>
+            Здесь каждое утро начинается с аромата свежемолотых зерен,
+            мягкой музыки и выпечки, приготовленной вручную.
+            Мы собрали лучшее из французских традиций.
+          </p>
+          <Link to="/process">
+            <MagicButton text="О процессе приготовления" />
+          </Link>
         </div>
+      </motion.div>
 
-        <div className="stat">
-          <span className="number">1 250+</span>
-          <p>Довольных гостей</p>
-        </div>
-      </div>
-    </section>
+      <motion.div
+        className="stats"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={{
+          show: { transition: { staggerChildren: 0.25 } }
+        }}
+      >
+        {[
+          { num: "25+", text: "Видов напитков" },
+          { num: "1 250+", text: "Довольных гостей" }
+        ].map((s) => (
+          <motion.div
+            className="stat"
+            key={s.text}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              show: { opacity: 1, y: 0 }
+            }}
+          >
+            <span className="number">{s.num}</span>
+            <p>{s.text}</p>
+          </motion.div>
+        ))}
+      </motion.div>
+    </motion.section>
   );
 }
